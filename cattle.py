@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import time
 import gdapi
+import os
 from gdapi import *  # NOQA
 
 DEFAULT_TIMEOUT = 45
@@ -33,6 +34,9 @@ def from_env(prefix='CATTLE_', **kw):
 
 
 def _main():
+    if 'CATTLE_URL' not in os.environ:
+        os.environ['CATTLE_URL'] = 'http://localhost:8080/v1'
+
     gdapi._main()
 
 if __name__ == '__main__':
