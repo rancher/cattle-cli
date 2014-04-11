@@ -13,7 +13,8 @@ class Client(gdapi.Client):
 
     def wait_success(self, obj, timeout=DEFAULT_TIMEOUT):
         obj = self.wait_transitioning(obj, timeout)
-        assert obj.transitioning == 'no'
+        if obj.transitioning != 'no':
+            raise gdapi.ClientApiError(obj.transitioningMessage)
         return obj
 
     def wait_transitioning(self, obj, timeout=DEFAULT_TIMEOUT):
