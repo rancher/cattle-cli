@@ -5,7 +5,7 @@ with open('./requirements.txt') as r:
 
 setup(
     name='cattle',
-    version='0.2.1',
+    version='0.2.2',
     py_modules=['cattle'],
     url='https://github.com/cattleio/cattle-cli',
     license='MIT Style',
