@@ -1,2 +1,2 @@
 flake8
-gdapi-python==0.2.2
+gdapi-python==0.3.0
