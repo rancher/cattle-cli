@@ -73,6 +73,12 @@ widget = client.by_id_widget('42')
 widget.foobars()
 ```
 
+## Bugs & Issues
+Please submit bugs and issues to [rancherio/rancher](//github.com/rancherio/rancher/issues) with a title starting with `[cattle-cli] `.
+
+Or just [click here](//github.com/rancherio/rancher/issues/new?title=%5Bcattle-cli%5D%20) to create a new issue.
+
+
 ## License
 
 MIT Style
