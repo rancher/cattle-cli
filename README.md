@@ -79,6 +79,23 @@ For bugs, questions, comments, corrections, suggestions, etc., open an issue in 
 Or just [click here](//github.com/rancherio/rancher/issues/new?title=%5Bcattle-cli%5D%20) to create a new issue.
 
 
+## Release Process
+
+First, be ibuildthecloud, because he owns the PyPi account.  Then create a file `${HOME}/.pypirc`
+
+```
+[distutils]
+index-servers = pypi
+
+[pypi]
+repository: https://pypi.python.org/pypi
+username: ibuildthecloud
+password: *************
+```
+
+Then run `python setup.py sdist upload`
+
+
 ## License
 
 MIT Style
