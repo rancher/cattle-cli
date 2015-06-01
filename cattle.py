@@ -17,11 +17,14 @@ class Client(gdapi.Client):
             raise gdapi.ClientApiError(obj.transitioningMessage)
         return obj
 
-    def wait_transitioning(self, obj, timeout=DEFAULT_TIMEOUT):
+    def wait_transitioning(self, obj, timeout=DEFAULT_TIMEOUT, sleep=0.01):
         start = time.time()
         obj = self.reload(obj)
         while obj.transitioning == 'yes':
-            time.sleep(.5)
+            time.sleep(sleep)
+            sleep *= 2
+            if sleep > 2:
+                sleep = 2
             obj = self.reload(obj)
             if time.time() - start > timeout:
                 msg = 'Timeout waiting for [{0}] to be done'.format(obj)
