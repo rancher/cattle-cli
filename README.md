@@ -74,9 +74,9 @@ widget.foobars()
 ```
 
 ## Contact
-For bugs, questions, comments, corrections, suggestions, etc., open an issue in [rancherio/rancher](//github.com/rancherio/rancher/issues) with a title starting with `[cattle-cli] `.
+For bugs, questions, comments, corrections, suggestions, etc., open an issue in [rancher/rancher](//github.com/rancher/rancher/issues) with a title starting with `[cattle-cli] `.
 
-Or just [click here](//github.com/rancherio/rancher/issues/new?title=%5Bcattle-cli%5D%20) to create a new issue.
+Or just [click here](//github.com/rancher/rancher/issues/new?title=%5Bcattle-cli%5D%20) to create a new issue.
 
 
 ## Release Process
