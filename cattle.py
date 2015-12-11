@@ -11,13 +11,14 @@ class Client(gdapi.Client):
     def __init__(self, *args, **kw):
         super(Client, self).__init__(*args, **kw)
 
-    def wait_success(self, obj, timeout=DEFAULT_TIMEOUT):
+    def wait_success(self, obj, timeout=-1):
         obj = self.wait_transitioning(obj, timeout)
         if obj.transitioning != 'no':
             raise gdapi.ClientApiError(obj.transitioningMessage)
         return obj
 
-    def wait_transitioning(self, obj, timeout=DEFAULT_TIMEOUT, sleep=0.01):
+    def wait_transitioning(self, obj, timeout=-1, sleep=0.01):
+        timeout = _get_timeout(timeout)
         start = time.time()
         obj = self.reload(obj)
         while obj.transitioning == 'yes':
@@ -26,11 +27,18 @@ class Client(gdapi.Client):
             if sleep > 2:
                 sleep = 2
             obj = self.reload(obj)
-            if time.time() - start > timeout:
-                msg = 'Timeout waiting for [{0}] to be done'.format(obj)
+            delta = time.time() - start
+            if delta > timeout:
+                msg = 'Timeout waiting for [{}:{}] to be done after {} seconds'.format(obj.type, obj.id, delta)
                 raise Exception(msg)
 
         return obj
+
+
+def _get_timeout(timeout):
+    if timeout == -1:
+        return DEFAULT_TIMEOUT
+    return timeout
 
 
 def from_env(prefix='CATTLE_', **kw):
