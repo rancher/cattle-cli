@@ -1,3 +1,6 @@
+# Deprecated
+For rancher v2.x, use https://github.com/rancher/client-python
+
 # Cattle Python API and Client
 
 A Python client for Cattle
